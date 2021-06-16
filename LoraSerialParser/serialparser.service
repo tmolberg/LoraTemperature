@@ -1,0 +1,15 @@
+[Unit]
+Description=MqttParser
+After=network-online.target
+Wants=network.target network-online.target
+
+# Change path to reflect the working area and also the start place of your python serial gateway...
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/Lora/SerialInfluxGateway/serialtomqtt.py
+WorkingDirectory=/home/pi/Lora/SerialInfluxGateway/
+Restart=on-failure
+
+
+[Install]
+WantedBy=multi-user.target
